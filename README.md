@@ -88,7 +88,7 @@ Use that to **buy**, **bargain**, or **walk away** — with evidence, not a gut 
 
 | Layer | Choice |
 | --- | --- |
-| Language | Kotlin 2.2 |
+| Language | Kotlin 2.4 |
 | UI | Jetpack Compose · Material 3 |
 | Platform | Android 7.0+ (API 24) |
 | Build | Android Gradle Plugin 9.4 · JDK 11 |

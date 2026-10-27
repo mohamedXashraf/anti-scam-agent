@@ -24,3 +24,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "AntiScam Agent"
 include(":app")
+include(":presentation")
+include(":domain")
+include(":data")
