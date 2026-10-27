@@ -39,7 +39,7 @@ fun Splash(navigate: (Route) -> Unit = {}, viewModel: SplashViewModel = koinView
 
     when(val viewState = state.value) {
         is SplashViewState.Loading -> LaunchedEffect(Unit){ viewModel.intent.postValue(SplashViewIntent.CheckUser) }
-        is SplashViewState.Success -> {} //navigate(Route.BASE_HOME)
+        is SplashViewState.Authentification -> {} //navigate(Route.BASE_HOME)
         is SplashViewState.Error -> MessageView(message = viewState.error.errorMessage())
     }
 }
