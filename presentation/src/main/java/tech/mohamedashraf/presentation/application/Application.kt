@@ -11,7 +11,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import tech.mohamedashraf.antiscamagent.presentation.home.Home
-import tech.mohamedashraf.antiscamagent.presentation.newsale.NewSale
 import tech.mohamedashraf.antiscamagent.presentation.splash.Splash
 import tech.mohamedashraf.presentation.ui.theme.AntiScamAgentAppTheme
 
@@ -28,7 +27,7 @@ fun Application() {
             NavHost(navController = navController, startDestination = Route.SPLASH, builder = {
                 composable<Route.SPLASH> { Splash(navigate = navigator) }
                 composable<Route.HOME> { Home(navigate = navigator) }
-                composable<Route.ITEM_DETAILS> { NewSale(navigate = navigator) }
+                composable<Route.ITEM_DETAILS> {  }
             })
         }
     }

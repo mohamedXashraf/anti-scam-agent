@@ -5,38 +5,30 @@ import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
 import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.bind
-import tech.mohamedashraf.antiscamagent.domain.usecase.*
-import tech.mohamedashraf.antiscamagent.data.repository.*
-import tech.mohamedashraf.antiscamagent.domain.repository.*
-import tech.mohamedashraf.antiscamagent.presentation.home.HomeViewModel
-import tech.mohamedashraf.antiscamagent.presentation.newsale.NewSaleViewModel
-import tech.mohamedashraf.antiscamagent.presentation.splash.SplashViewModel
+import tech.mohamedashraf.data.firebase.*
+import tech.mohamedashraf.data.repository.*
+import tech.mohamedashraf.domain.repository.*
+import tech.mohamedashraf.domain.usecase.*
 
 val appModule = module {
 
-    viewModelOf(::SplashViewModel)
+//    viewModelOf(::SplashViewModel)
 
-    viewModel { HomeViewModel(get(), get()) }
-
-    viewModel { NewSaleViewModel(get()) }
+//    viewModel { HomeViewModel(get(), get()) }
 }
 
 val dataModule = module {
 
-    single { Database(AndroidSqliteDriver(Database.Schema, get(), "netsold.db")) }
+    single { Authentication() }
+
+    single { FireStoreDB() }
 
     singleOf(::UserRepositoryImplementation).bind(UserRepository::class)
 
-    single<SaleRepository> { SaleRepositoryImplementation(get()) }
+//    single<SaleRepository> { SaleRepositoryImplementation(get()) }
 }
 
 val domainModule = module {
 
-    single { CheckUser(get()) }
-
-    single { AddNewSale(get(), get()) }
-
-    single { GetMonthAnalysis(get(), get()) }
-
-    single { DownloadMonthSalesCSV() }
+    single { Login(get()) }
 }

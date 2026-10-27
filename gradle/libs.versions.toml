@@ -2,18 +2,18 @@
 
 [versions]
 # Define the dependency versions
-gradle = "9.4.0"
-kotlin = "2.4.10"
+gradle = "9.4.1"
+kotlin = "2.4.21"
 ksp = "2.3.10"
 coroutines = "1.11.0"
 kotlin-gradle-plugin = "1.6.10"
 kotlin-serialization = "2.4.10"
 orgEclipsePahoClientMqttv3 = "1.2.5"
-serialization = "1.11.0"
-serialization-plugin = "2.4.10"
+serialization = "1.12.0"
+serialization-plugin = "2.4.21"
 datetime = "0.8.0"
-guava = "33.7.1-android"
-datastore = "1.2.1"
+guava = "33.7.2-android"
+datastore = "1.3.0"
 
 # Google
 inapp_update = "2.1.0"
@@ -21,54 +21,54 @@ play_services_auth = "22.0.0"
 play_services_auth_phone = "18.3.1"
 
 # Ktor
-ktor = "3.5.2"
-ktor_serialization_json = "3.5.2"
+ktor = "3.6.0"
+ktor_serialization_json = "3.6.0"
 
 # Koin
 koin = "4.2.2"
 
 # Stomp
-stomp = "10.0.0"
+stomp = "10.1.0"
 
 # MQTT
 kmqtt = "1.0.0"
-hivemqMqttClient = "1.4.0"
-commonsLang3 = "3.20.0"
+hivemqMqttClient = "1.4.1"
+commonsLang3 = "3.21.0"
 jtsCore = "1.20.0"
 
 # SQL Delight
-sqldelight = "2.3.2"
+sqldelight = "2.4.1"
 sqlcipher = "4.5.4"
 sqliter = "1.4.0"
 
 # Androidx
-androidx_core_ktx = "1.19.0"
+androidx_core_ktx = "1.19.1"
 androidx_lifecycle_ktx = "2.11.0"
 androidx_appcompat = "1.8.0"
 google_material = "1.14.0"
 exifinterface = "1.4.2"
 appAutomotive = "1.7.0"
 playServicesWearable = "20.0.1"
-appfunctions = "1.0.0-alpha11"
+appfunctions = "1.0.0-beta01"
 
 # Compose
-compose = "1.12.0"
-compose-plugin = "1.12.0"
+compose = "1.12.1"
+compose-plugin = "1.12.2"
 compose_compiler = "1.5.15"
-compose_material = "1.12.0"
-compose_material3 = "1.5.0-alpha27"
+compose_material = "1.12.1"
+compose_material3 = "1.5.0-beta02"
 compose_icons = "1.7.8"
-compose_google_fonts = "1.12.0"
-compose_wear_material = "1.6.2"
-compose_wear_foundation = "1.6.2"
+compose_google_fonts = "1.12.1"
+compose_wear_material = "1.7.1"
+compose_wear_foundation = "1.7.1"
 core_splashscreen = "1.2.0"
 androidx_activity_compose = "1.13.0"
-compose_runtime_livedata = "1.12.0"
+compose_runtime_livedata = "1.12.1"
 compose_runtime_lifecycle = "2.11.0"
-compose_navigation = "2.10.0"
+compose_navigation = "2.10.2"
 
 # BuildKonfig
-buildkonfig = "0.22.0"
+buildkonfig = "0.23.0"
 
 # Coil
 coil = "2.7.0"
@@ -78,7 +78,7 @@ junit = "4.13.2"
 junit_ext = "1.3.0"
 
 # Mockito
-mockito = "5.23.0"
+mockito = "5.24.0"
 
 # Espresso
 espresso = "3.7.0"
@@ -98,10 +98,10 @@ tensorflow_task = "0.4.4"
 
 # Retrofit
 retrofit = "3.0.0"
-sqaure_logger = "5.5.0"
+sqaure_logger = "5.5.1"
 
 # Gson
-gson = "2.14.0"
+gson = "2.15.0"
 
 # Realm
 realm = "10.19.0"
@@ -127,7 +127,7 @@ chucker = "4.3.1"
 mapbox = "11.7.1"
 
 # Google Maps
-google-maps = "8.6.0"
+google-maps = "9.0.1"
 
 # Phoenix
 processPhoenix = "3.0.0"
@@ -151,6 +151,7 @@ kotlin_std = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kot
 kotlin_serialization_json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization" }
 kotlin-serialization = { module = "org.jetbrains.kotlin:kotlin-serialization", version.ref = "kotlin-serialization" }
 coroutines_core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
+coroutines_play_services = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-play-services", version.ref = "coroutines" }
 kotlin_datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "datetime" }
 guava = { module = "com.google.guava:guava", version.ref = "guava" }
 datastore = { module = "androidx.datastore:datastore-preferences", version.ref = "datastore" }
