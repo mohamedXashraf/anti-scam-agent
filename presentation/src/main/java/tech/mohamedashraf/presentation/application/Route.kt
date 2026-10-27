@@ -36,6 +36,9 @@ sealed class Route {
     data object BASE_LOGIN : Route()
 
     @Serializable
+    data object BASE_VERIFICATION : Route()
+
+    @Serializable
     data object BASE_HOME : Route()
 
     @Serializable

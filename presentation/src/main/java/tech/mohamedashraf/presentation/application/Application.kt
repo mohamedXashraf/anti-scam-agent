@@ -15,6 +15,7 @@ import tech.mohamedashraf.presentation.login.Login
 import tech.mohamedashraf.presentation.register.Register
 import tech.mohamedashraf.presentation.splash.Splash
 import tech.mohamedashraf.presentation.ui.theme.AntiScamAgentAppTheme
+import tech.mohamedashraf.presentation.verification.Verification
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
@@ -30,6 +31,7 @@ fun Application() {
                 composable<Route.SPLASH> { Splash(navigate = navigator) }
                 composable<Route.LOGIN> { Login(navigate = navigator) }
                 composable<Route.REGISTER> { Register(navigate = navigator) }
+                composable<Route.VERIFICATION> { Verification(navigate = navigator) }
                 composable<Route.HOME> { Home(navigate = navigator) }
                 composable<Route.ITEM_DETAILS> {  }
             })
@@ -44,6 +46,7 @@ private fun navigate(navController: NavHostController, route: Route) {
         Route.BASE_HOME -> navController.navigate(Route.HOME) { popUpTo(navController.graph.id) }
         Route.RESET_HOME -> navController.navigate(Route.HOME) { popUpTo(Route.HOME) { inclusive = true } }
         Route.BASE_LOGIN -> navController.navigate(Route.LOGIN) { popUpTo(navController.graph.id) }
+        Route.BASE_VERIFICATION -> navController.navigate(Route.VERIFICATION) { popUpTo(navController.graph.id) }
         else -> navController.navigate(route)
     }
 }

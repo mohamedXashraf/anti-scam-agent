@@ -25,9 +25,23 @@ class UserRepositoryImplementation(private val authentication: Authentication, p
         } else null
     }
 
+    override suspend fun checkLoggedInUserVerification(): Boolean = authentication.checkLoggedInUserVerification()
+
+    override suspend fun sendVerificationEmail() {
+        authentication.sendVerificationEmail()
+    }
+
     override suspend fun getUser(uid: String): User? {
         return if (uid.isNotBlank()) {
             fireStoreDB.getUser(uid)?.toUser()
         } else null
+    }
+
+    override suspend fun updateUser(user: User) {
+        fireStoreDB.addUser(UserEntity.fromUser(user))
+    }
+
+    override suspend fun logout() {
+        authentication.logout()
     }
 }

@@ -12,6 +12,7 @@ import tech.mohamedashraf.domain.usecase.*
 import tech.mohamedashraf.presentation.login.LoginViewModel
 import tech.mohamedashraf.presentation.register.RegisterViewModel
 import tech.mohamedashraf.presentation.splash.SplashViewModel
+import tech.mohamedashraf.presentation.verification.VerificationViewModel
 
 val appModule = module {
 
@@ -20,6 +21,8 @@ val appModule = module {
     viewModel { LoginViewModel(get()) }
 
     viewModel { RegisterViewModel(get()) }
+
+    viewModel { VerificationViewModel(get(), get(), get()) }
 }
 
 val dataModule = module {
@@ -40,4 +43,10 @@ val domainModule = module {
     single { Login(get()) }
 
     single { Register(get()) }
+
+    single { SendVerificationEmail(get()) }
+
+    single { CheckUserVerification(get()) }
+
+    single { Logout(get()) }
 }
