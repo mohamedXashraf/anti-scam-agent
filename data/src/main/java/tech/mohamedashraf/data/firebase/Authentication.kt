@@ -2,11 +2,12 @@ package tech.mohamedashraf.data.firebase
 
 import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuthException
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.tasks.await
-import tech.mohamedashraf.domain.error.AuthenticationFailedError
+import tech.mohamedashraf.domain.error.*
 
 class Authentication {
 
@@ -42,11 +43,14 @@ class Authentication {
             return result.user?.uid ?: ""
         } catch (error: FirebaseAuthException) {
             error.printStackTrace()
-            val message = when (error.errorCode) {
-                "ERROR_USER_NOT_FOUND", "user-not-found", "ERROR_WRONG_PASSWORD", "wrong-password", "ERROR_INVALID_CREDENTIAL", "invalid-credential" -> "Invalid Email or Password! ... Please try again."
-                else -> error.message ?: "Login Failed! ... Please try again."
+            when (error.errorCode) {
+                "ERROR_USER_NOT_FOUND", "user-not-found" -> throw AccountNotFoundError("Account Not Found! ... Please check again.")
+                "ERROR_WRONG_PASSWORD", "wrong-password", "ERROR_INVALID_CREDENTIAL", "invalid-credential" -> throw InvalidCredentialsError("Invalid Email or Password! ... Please try again.")
+                else -> throw AuthenticationFailedError(error.message ?: "Login Failed! ... Please try again.")
             }
-            throw AuthenticationFailedError(message)
+        } catch (error: FirebaseAuthInvalidCredentialsException) {
+            error.printStackTrace()
+            throw InvalidCredentialsError("Invalid Email or Password! ... Please try again.")
         } catch (error: Exception) {
             error.printStackTrace()
             throw AuthenticationFailedError(error.message ?: "Login Failed! ... Please try again.")
@@ -63,19 +67,19 @@ class Authentication {
             } else {
                 throw AuthenticationFailedError("Something went wrong! ... Please try again later.")
             }
-        } catch (error: AuthenticationFailedError) {
-            throw error
         } catch (error: FirebaseAuthUserCollisionException) {
             error.printStackTrace()
-            throw AuthenticationFailedError("Account already exists!")
+            throw AccountCollisionError("Account already exists!")
+        } catch (error: FirebaseAuthInvalidCredentialsException) {
+            error.printStackTrace()
+            throw InvalidCredentialsError("Invalid Email or Password! ... Please try again.")
         } catch (error: FirebaseAuthException) {
             error.printStackTrace()
-            val message = when (error.errorCode) {
-                "ERROR_WEAK_PASSWORD", "weak-password" -> "Weak Password! ... Please try stronger password."
-                "ERROR_EMAIL_ALREADY_IN_USE", "email-already-in-use" -> "Account already exists!"
-                else -> error.message ?: "Something went wrong! ... Please try again later."
+            when (error.errorCode) {
+                "ERROR_WEAK_PASSWORD", "weak-password" -> throw InvalidCredentialsError("Weak Password! ... Please try stronger password.")
+                "ERROR_EMAIL_ALREADY_IN_USE", "email-already-in-use" -> throw AccountCollisionError("Account already exists!")
+                else -> throw AuthenticationFailedError(error.message ?: "Something went wrong! ... Please try again later.")
             }
-            throw AuthenticationFailedError(message)
         } catch (error: Exception) {
             error.printStackTrace()
             throw AuthenticationFailedError(error.message ?: "Something went wrong! ... Please try again later.")

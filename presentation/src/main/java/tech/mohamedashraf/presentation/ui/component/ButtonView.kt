@@ -15,7 +15,7 @@ import tech.mohamedashraf.presentation.ui.theme.primaryLight
 import tech.mohamedashraf.presentation.ui.theme.surfaceLight
 
 @Composable
-fun ButtonView(modifier: Modifier = Modifier, label: String, width: ButtonWidth = ButtonWidth.FILLED, radius: Int = 16, action: () -> Unit)
+fun ButtonView(modifier: Modifier = Modifier, label: String, width: ButtonWidth = ButtonWidth.FILLED, radius: Int = 32, action: () -> Unit)
 {
     val finalModifier = when (width){
         ButtonWidth.WRAPPED -> modifier.height(50.dp).wrapContentWidth()

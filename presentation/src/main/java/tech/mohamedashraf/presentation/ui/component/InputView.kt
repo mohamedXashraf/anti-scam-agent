@@ -38,7 +38,7 @@ import tech.mohamedashraf.presentation.ui.theme.outlineLight
 import tech.mohamedashraf.presentation.ui.theme.primaryLight
 
 @Composable
-fun InputView(modifier: Modifier = Modifier.fillMaxWidth(), input: MutableState<String>, keyboardType: KeyboardType, keyboardCapitalization: KeyboardCapitalization = KeyboardCapitalization.Sentences, icon: ImageVector? = null, label: String = "", hint: String = "", maxLines: Int = 1, maxLength: Int = -1, radius: Int = 16, enabled: Boolean = true, shouldClearFocus: Boolean = false, shouldValidateEmptyView: Boolean = false, onChange: (String) -> Unit = {})
+fun InputView(modifier: Modifier = Modifier.fillMaxWidth(), input: MutableState<String>, keyboardType: KeyboardType, keyboardCapitalization: KeyboardCapitalization = KeyboardCapitalization.Sentences, icon: ImageVector? = null, label: String = "", hint: String = "", maxLines: Int = 1, maxLength: Int = -1, radius: Int = 32, enabled: Boolean = true, shouldClearFocus: Boolean = false, shouldValidateEmptyView: Boolean = false, onChange: (String) -> Unit = {})
 {
     val isPassword = keyboardType == KeyboardType.Password || keyboardType == KeyboardType.NumberPassword
     val passwordIsVisible = remember { mutableStateOf(false) }

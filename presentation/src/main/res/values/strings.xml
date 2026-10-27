@@ -4,9 +4,22 @@
     <string name="success">Success</string>
     <string name="error">Error</string>
     <string name="warning">Warning</string>
+
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+
     <string name="general_error">Something Went Wrong! … Please try again later.</string>
+    <string name="invalid_email_error">Invalid Email! … Please make sure email is correct.</string>
+    <string name="invalid_credentials_error">Invalid Email or Password! … Please try again.</string>
     <string name="missing_input_error">Missing Input Information! … Please make sure to enter all required information.</string>
-    <string name="no_sales_to_download_error">No Sales For This Month! … Please make sure the month has recorded sales.</string>
+    <string name="auth_error">Authentication Failed! … Please try again.</string>
+    <string name="account_collision_error">Account Already Exists! … Please try to log in.</string>
+    <string name="account_not_found_error">Account Not Found! … Please check again.</string>
+    <string name="password_confirmation_mismatch_error">Password confirmation does not match! … Please check again.</string>
 
     <array name="com_google_android_gms_fonts_certs">
         <item>@array/com_google_android_gms_fonts_certs_dev</item>

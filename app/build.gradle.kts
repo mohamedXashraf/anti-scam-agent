@@ -1,8 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.compose.compiler)
-//    alias(libs.plugins.google.services)
-//    alias(libs.plugins.firebase.crashlytics.gradle)
+    alias(libs.plugins.google.services)
+    alias(libs.plugins.firebase.crashlytics.gradle)
 }
 
 android {

@@ -9,6 +9,15 @@ sealed class Route {
     data object SPLASH : Route()
 
     @Serializable
+    data object LOGIN : Route()
+
+    @Serializable
+    data object REGISTER : Route()
+
+    @Serializable
+    data object VERIFICATION : Route()
+
+    @Serializable
     data object HOME : Route()
 
     @Serializable
@@ -22,6 +31,9 @@ sealed class Route {
 
     @Serializable
     data object BASE_SPLASH : Route()
+
+    @Serializable
+    data object BASE_LOGIN : Route()
 
     @Serializable
     data object BASE_HOME : Route()
