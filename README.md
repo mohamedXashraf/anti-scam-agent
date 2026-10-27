@@ -121,5 +121,5 @@ Core product flows (listing ingest, 15-second capture, and verdict) are in activ
 ---
 
 <p align="center">
-  <sub>Built by <a href="https://github.com/mohamedXashraf">Mohamed Ashraf</a> · Meta Global AI Developer Hackathon</sub>
+  <sub>Built by <a href="https://mohamedashraf.tech/">Mohamed Ashraf</a> · Meta Global AI Developer Hackathon</sub>
 </p>
