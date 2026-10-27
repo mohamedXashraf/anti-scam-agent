@@ -9,10 +9,11 @@ import tech.mohamedashraf.data.firebase.*
 import tech.mohamedashraf.data.repository.*
 import tech.mohamedashraf.domain.repository.*
 import tech.mohamedashraf.domain.usecase.*
+import tech.mohamedashraf.presentation.splash.SplashViewModel
 
 val appModule = module {
 
-//    viewModelOf(::SplashViewModel)
+    viewModelOf(::SplashViewModel)
 
 //    viewModel { HomeViewModel(get(), get()) }
 }
@@ -29,6 +30,8 @@ val dataModule = module {
 }
 
 val domainModule = module {
+
+    single { CheckAuthenticatedUser(get()) }
 
     single { Login(get()) }
 }

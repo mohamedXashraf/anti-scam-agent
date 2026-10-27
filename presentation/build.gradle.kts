@@ -40,6 +40,9 @@ dependencies {
     implementation(libs.compose.google.fonts)
     implementation(libs.compose.icons)
 
+    implementation(libs.koin.android.compose)
+    implementation(libs.koin.android.coroutines)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.espresso.core)
     androidTestImplementation(libs.junit.ext)

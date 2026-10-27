@@ -1,15 +1,11 @@
 package tech.mohamedashraf.presentation.ui.component
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Storefront
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuAnchorType
 import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.ExposedDropdownMenuDefaults
@@ -27,18 +23,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import tech.mohamedashraf.antiscamagent.R
-import tech.mohamedashraf.antiscamagent.model.Marketplace
-import tech.mohamedashraf.antiscamagent.ui.theme.NetSoldTheme
+import tech.mohamedashraf.presentation.R
 import tech.mohamedashraf.presentation.ui.theme.backgroundLight
 import tech.mohamedashraf.presentation.ui.theme.displayFontFamily
 import tech.mohamedashraf.presentation.ui.theme.errorLight
 import tech.mohamedashraf.presentation.ui.theme.outlineLight
 import tech.mohamedashraf.presentation.ui.theme.primaryLight
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun <T> DropDownMenuView(
     modifier: Modifier = Modifier.fillMaxWidth(),
@@ -101,41 +93,6 @@ fun <T> DropDownMenuView(
                 text = stringResource(id = R.string.missing_input_error),
                 color = errorLight,
                 fontWeight = FontWeight.Medium
-            )
-        }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-private fun DropDownMenuViewPreview() {
-    val marketplaces = Marketplace.entries
-    val selectedMarketplace = remember { mutableStateOf<Marketplace?>(null) }
-    val selectedOption = remember { mutableStateOf(Marketplace.FACEBOOK_MARKETPLACE) }
-
-    NetSoldTheme {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
-        ) {
-            DropDownMenuView(
-                items = marketplaces,
-                selectedItem = selectedMarketplace,
-                label = "Marketplace",
-                hint = "Select marketplace",
-                icon = Icons.Outlined.Storefront,
-                itemLabel = { it?.name?.replace("_", " ") ?: "" }
-            )
-
-            DropDownMenuView(
-                items = marketplaces,
-                selectedItem = selectedOption,
-                label = "Marketplace",
-                hint = "Select marketplace",
-                icon = Icons.Outlined.Storefront,
-                itemLabel = { it.name.replace("_", " ") }
             )
         }
     }

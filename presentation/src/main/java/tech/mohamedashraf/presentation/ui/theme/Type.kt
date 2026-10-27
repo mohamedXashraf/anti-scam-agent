@@ -21,15 +21,15 @@ val bodyFontFamily = FontFamily(
 
 val displayFontFamily = FontFamily(
     Font(
-        googleFont = GoogleFont("ABeeZee"),
+        googleFont = GoogleFont("Montserrat"),
         fontProvider = provider,
     )
 )
 
 // Default Material 3 typography values
-val baseline = _root_ide_package_.kotlin.text.Typography()
+val baseline = Typography()
 
-val AppTypography = _root_ide_package_.kotlin.text.Typography(
+val AppTypography = Typography(
     displayLarge = baseline.displayLarge.copy(fontFamily = displayFontFamily),
     displayMedium = baseline.displayMedium.copy(fontFamily = displayFontFamily),
     displaySmall = baseline.displaySmall.copy(fontFamily = displayFontFamily),
@@ -46,4 +46,3 @@ val AppTypography = _root_ide_package_.kotlin.text.Typography(
     labelMedium = baseline.labelMedium.copy(fontFamily = bodyFontFamily),
     labelSmall = baseline.labelSmall.copy(fontFamily = bodyFontFamily),
 )
-

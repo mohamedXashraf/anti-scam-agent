@@ -31,7 +31,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
-import tech.mohamedashraf.antiscamagent.R
+import tech.mohamedashraf.presentation.R
 import tech.mohamedashraf.presentation.ui.theme.primaryLight
 import tech.mohamedashraf.presentation.ui.theme.surfaceLight
 

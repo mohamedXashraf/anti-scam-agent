@@ -1,4 +1,13 @@
 <resources>
+    <string name="app_name">AntiScam Agent</string>
+    <string name="ok">OK</string>
+    <string name="success">Success</string>
+    <string name="error">Error</string>
+    <string name="warning">Warning</string>
+    <string name="general_error">Something Went Wrong! … Please try again later.</string>
+    <string name="missing_input_error">Missing Input Information! … Please make sure to enter all required information.</string>
+    <string name="no_sales_to_download_error">No Sales For This Month! … Please make sure the month has recorded sales.</string>
+
     <array name="com_google_android_gms_fonts_certs">
         <item>@array/com_google_android_gms_fonts_certs_dev</item>
         <item>@array/com_google_android_gms_fonts_certs_prod</item>

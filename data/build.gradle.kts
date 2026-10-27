@@ -13,6 +13,12 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
+    buildTypes.forEach {
+        it.buildConfigField("String", "MUSE_API_KEY", project.properties["MUSE_API_KEY")
+    }
+    buildTypes.each {
+        it.buildConfigField("Boolean", "IS_DEV", project.properties["dev"])
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11

@@ -10,8 +10,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import tech.mohamedashraf.antiscamagent.presentation.home.Home
-import tech.mohamedashraf.antiscamagent.presentation.splash.Splash
+import tech.mohamedashraf.presentation.splash.Splash
 import tech.mohamedashraf.presentation.ui.theme.AntiScamAgentAppTheme
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -26,7 +25,7 @@ fun Application() {
         Scaffold (modifier = Modifier.fillMaxSize()) {
             NavHost(navController = navController, startDestination = Route.SPLASH, builder = {
                 composable<Route.SPLASH> { Splash(navigate = navigator) }
-                composable<Route.HOME> { Home(navigate = navigator) }
+                //composable<Route.HOME> { Home(navigate = navigator) }
                 composable<Route.ITEM_DETAILS> {  }
             })
         }

@@ -2,10 +2,8 @@ package tech.mohamedashraf.presentation.utils
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
-import tech.mohamedashraf.antiscamagent.R
-import tech.mohamedashraf.antiscamagent.error.*
-import tech.mohamedashraf.domain.error.MissingInfoError
-import tech.mohamedashraf.domain.error.NoSalesToDownloadError
+import tech.mohamedashraf.presentation.R
+import tech.mohamedashraf.domain.error.*
 
 @Composable
 fun Throwable.errorMessage(): String {
