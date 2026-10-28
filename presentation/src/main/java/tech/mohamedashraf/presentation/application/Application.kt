@@ -10,6 +10,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.toRoute
+import tech.mohamedashraf.presentation.details.ProductDetails
 import tech.mohamedashraf.presentation.home.Home
 import tech.mohamedashraf.presentation.login.Login
 import tech.mohamedashraf.presentation.register.Register
@@ -33,7 +35,7 @@ fun Application() {
                 composable<Route.REGISTER> { Register(navigate = navigator) }
                 composable<Route.VERIFICATION> { Verification(navigate = navigator) }
                 composable<Route.HOME> { Home(navigate = navigator) }
-                composable<Route.ITEM_DETAILS> {  }
+                composable<Route.ITEM_DETAILS> { ProductDetails(navigate = navigator, productId = it.toRoute<Route.ITEM_DETAILS>().productId) }
             })
         }
     }

@@ -9,6 +9,7 @@ import tech.mohamedashraf.data.firebase.*
 import tech.mohamedashraf.data.repository.*
 import tech.mohamedashraf.domain.repository.*
 import tech.mohamedashraf.domain.usecase.*
+import tech.mohamedashraf.presentation.home.HomeViewModel
 import tech.mohamedashraf.presentation.login.LoginViewModel
 import tech.mohamedashraf.presentation.register.RegisterViewModel
 import tech.mohamedashraf.presentation.splash.SplashViewModel
@@ -23,6 +24,8 @@ val appModule = module {
     viewModel { RegisterViewModel(get()) }
 
     viewModel { VerificationViewModel(get(), get(), get()) }
+
+    viewModel { HomeViewModel(get()) }
 }
 
 val dataModule = module {
@@ -33,7 +36,7 @@ val dataModule = module {
 
     singleOf(::UserRepositoryImplementation).bind(UserRepository::class)
 
-    single<MarketplaceRepository> { MarketplaceRepositoryImplementation(get(), get()) }
+    single<MarketplaceRepository> { MarketplaceRepositoryImplementation(get()) }
 }
 
 val domainModule = module {
@@ -49,4 +52,6 @@ val domainModule = module {
     single { CheckUserVerification(get()) }
 
     single { Logout(get()) }
+
+    single { GetMarketplaceProducts(get(), get()) }
 }

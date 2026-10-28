@@ -19,7 +19,6 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
-
 }
 
 dependencies {
@@ -39,6 +38,7 @@ dependencies {
     implementation(libs.compose.runtime.lifecycle)
     implementation(libs.compose.google.fonts)
     implementation(libs.compose.icons)
+    implementation(libs.coil)
 
     implementation(libs.koin.android.compose)
     implementation(libs.koin.android.coroutines)

@@ -21,7 +21,7 @@ sealed class Route {
     data object HOME : Route()
 
     @Serializable
-    data object ITEM_DETAILS : Route()
+    data class ITEM_DETAILS(val productId: String) : Route()
 
 
     // Complex Routes
