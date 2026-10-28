@@ -27,6 +27,7 @@ import tech.mohamedashraf.presentation.ui.component.ButtonView
 import tech.mohamedashraf.presentation.ui.component.InputView
 import tech.mohamedashraf.presentation.ui.component.Loading
 import tech.mohamedashraf.presentation.ui.component.MessageView
+import tech.mohamedashraf.presentation.ui.component.TextButtonView
 import tech.mohamedashraf.presentation.ui.theme.AntiScamAgentAppTheme
 import tech.mohamedashraf.presentation.ui.theme.backgroundLight
 import tech.mohamedashraf.presentation.utils.errorMessage
@@ -74,7 +75,7 @@ private fun LoginView(onLogin: (String, String) -> Unit = { _, _ -> }, onRegiste
                 onLogin(email.value, password.value)
             }
             Spacer(modifier = Modifier.height(8.dp))
-            ButtonView(label = stringResource(R.string.register), action = onRegister)
+            TextButtonView(label = stringResource(R.string.register), action = onRegister)
         }
     }
 }

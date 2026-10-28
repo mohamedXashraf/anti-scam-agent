@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">AntiScam Agent</string>
     <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
     <string name="success">Success</string>
     <string name="error">Error</string>
     <string name="warning">Warning</string>
@@ -13,14 +14,15 @@
     <string name="logout">Logout</string>
     <string name="register">Register</string>
 
-
     <string name="resend_verification_email">Resend Verification Email</string>
     <string name="recheck_verification">Re-Check My Verification</string>
     <string name="unverified_account">Your account is still unverified! … Please check your email for verification link.</string>
     <string name="verification_sent">Verification email has been sent … Please check your email.</string>
     <string name="verified_account">Congratulations! … Your account has been verified.</string>
 
-
+    <string name="camera_permission_required">Camera permission required</string>
+    <string name="camera_permission_required_message">Camera access was denied. Enable it from the app settings to continue.</string>
+    <string name="open_settings">Open settings</string>
 
     <string name="general_error">Something Went Wrong! … Please try again later.</string>
     <string name="invalid_email_error">Invalid Email! … Please make sure email is correct.</string>

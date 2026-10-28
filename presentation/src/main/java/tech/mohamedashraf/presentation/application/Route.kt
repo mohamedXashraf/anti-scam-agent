@@ -23,6 +23,12 @@ sealed class Route {
     @Serializable
     data class ITEM_DETAILS(val productId: String) : Route()
 
+    @Serializable
+    data class CHAT(val productId: String) : Route()
+
+    @Serializable
+    data class AGENT(val productId: String) : Route()
+
 
     // Complex Routes
 

@@ -14,6 +14,8 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.rounded.Logout
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.runtime.Composable
@@ -36,12 +38,14 @@ import tech.mohamedashraf.domain.rules.ChatParticipant
 import tech.mohamedashraf.domain.rules.Product
 import tech.mohamedashraf.presentation.R
 import tech.mohamedashraf.presentation.application.Route
+import tech.mohamedashraf.presentation.ui.component.IconButtonView
 import tech.mohamedashraf.presentation.ui.component.Loading
 import tech.mohamedashraf.presentation.ui.component.MessageView
 import tech.mohamedashraf.presentation.ui.component.TextView
 import tech.mohamedashraf.presentation.ui.theme.AntiScamAgentAppTheme
 import tech.mohamedashraf.presentation.ui.theme.backgroundLight
 import tech.mohamedashraf.presentation.ui.theme.outlineLight
+import tech.mohamedashraf.presentation.ui.theme.primaryLight
 import tech.mohamedashraf.presentation.utils.errorMessage
 import tech.mohamedashraf.presentation.utils.format
 
@@ -53,19 +57,21 @@ fun Home(navigate: (Route) -> Unit = {}, viewModel: HomeViewModel = koinViewMode
 
     HomeView(
         products = products.value,
-        onSelect = { navigate(Route.ITEM_DETAILS(it.id)) }
+        onSelect = { navigate(Route.ITEM_DETAILS(it.id)) },
+        onLogout = { viewModel.intent.postValue(HomeViewIntent.Logout) }
     )
 
     when(val viewState = state.value) {
         is HomeViewState.ViewInitialization -> LaunchedEffect(1) { viewModel.intent.postValue(HomeViewIntent.GetMarketplaceProducts) }
         is HomeViewState.Loading -> Loading()
         is HomeViewState.Data -> LaunchedEffect(1) { products.value = viewState.products }
+        is HomeViewState.LoggedOut -> { navigate(Route.BASE_SPLASH) }
         is HomeViewState.Error -> MessageView(message = viewState.error.errorMessage())
     }
 }
 
 @Composable
-private fun HomeView(products: List<Product> = listOf(), onSelect: (Product) -> Unit = {}) {
+private fun HomeView(products: List<Product> = listOf(), onSelect: (Product) -> Unit = {}, onLogout: () -> Unit = {}) {
     LazyColumn (modifier = Modifier.background(backgroundLight).fillMaxSize().padding(16.dp)) {
         item { Spacer(modifier = Modifier.height(32.dp)) }
         item {
@@ -75,6 +81,8 @@ private fun HomeView(products: List<Product> = listOf(), onSelect: (Product) -> 
             ) {
                 Image(painter = painterResource(R.drawable.ic_logo), modifier = Modifier.height(56.dp), contentDescription = "")
                 TextView(text = stringResource(R.string.app_name), size = 24, fontWeight = FontWeight.Black)
+                Spacer(modifier = Modifier.width(24.dp).weight(1f))
+                IconButtonView(icon = Icons.AutoMirrored.Rounded.Logout, tint = primaryLight, action = onLogout)
             }
             Spacer(modifier = Modifier.height(24.dp))
         }

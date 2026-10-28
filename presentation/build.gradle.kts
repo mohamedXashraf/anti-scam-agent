@@ -31,6 +31,7 @@ dependencies {
     implementation(libs.compose.tooling.preview)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.exifinterface)
     implementation(libs.kotlin.datetime)
 
     implementation(libs.compose.navigation)

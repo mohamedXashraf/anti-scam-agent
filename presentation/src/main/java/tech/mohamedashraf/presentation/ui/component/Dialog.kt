@@ -1,5 +1,9 @@
 package tech.mohamedashraf.presentation.ui.component
 
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
+import android.provider.Settings
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -18,6 +22,7 @@ import androidx.compose.material.icons.rounded.ErrorOutline
 import androidx.compose.material.icons.rounded.WarningAmber
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -49,15 +54,10 @@ fun MessageView(
     if (visible.value) {
         Dialog(
             onDismissRequest = onDismiss,
-            properties = DialogProperties(
-                dismissOnBackPress = false,
-                dismissOnClickOutside = false,
-            ),
+            properties = DialogProperties(dismissOnBackPress = false, dismissOnClickOutside = false,),
         ) {
             Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(color = surfaceLight, shape = RoundedCornerShape(CornerSize(16.dp))),
+                modifier = Modifier.fillMaxWidth().background(color = surfaceLight, shape = RoundedCornerShape(CornerSize(16.dp))),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.Start
             ) {
@@ -76,6 +76,37 @@ fun MessageView(
                     onDismiss()
                 })
             }
+        }
+    }
+}
+
+@Composable
+fun SettingDialog(context: Context, showSettingsDialog: MutableState<Boolean>) {
+    Dialog(
+        onDismissRequest = { showSettingsDialog.value = false },
+        properties = DialogProperties(dismissOnBackPress = false, dismissOnClickOutside = false,)
+    ) {
+        Column(
+            modifier = Modifier.fillMaxWidth().background(color = surfaceLight, shape = RoundedCornerShape(CornerSize(16.dp))),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.Start
+        ) {
+            Row(
+                modifier = Modifier.padding(16.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Image(imageVector = icon(DialogType.WARNING), modifier = Modifier.size(24.dp), colorFilter = ColorFilter.tint(primaryLight), contentDescription = "")
+                TextView(modifier = Modifier.padding(horizontal = 8.dp), text = stringResource(R.string.camera_permission_required), size = 16, fontWeight = FontWeight.Bold, align = TextAlign.Center)
+            }
+            TextView(modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp), text = stringResource(R.string.camera_permission_required_message), size = 14, fontWeight = FontWeight.Normal, align = TextAlign.Center)
+            Spacer(modifier = Modifier.height(16.dp))
+            HorizontalDivider(thickness = 0.3.dp)
+            TextButtonView(label = stringResource(R.string.open_settings), action = {
+                showSettingsDialog.value = false
+                context.startActivity(Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply { data = Uri.fromParts("package", context.packageName, null) })
+            })
+            HorizontalDivider(thickness = 0.3.dp)
+            TextButtonView(label = stringResource(R.string.cancel), action = { showSettingsDialog.value = false })
         }
     }
 }

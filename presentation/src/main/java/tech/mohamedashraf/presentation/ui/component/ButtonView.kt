@@ -32,8 +32,12 @@ fun ButtonView(modifier: Modifier = Modifier, label: String, width: ButtonWidth 
 }
 
 @Composable
-fun TextButtonView(modifier: Modifier = Modifier, label: String, action: () -> Unit) {
-    val finalModifier = modifier.fillMaxWidth()
+fun TextButtonView(modifier: Modifier = Modifier, label: String, width: ButtonWidth = ButtonWidth.FILLED, action: () -> Unit) {
+    val finalModifier = when (width){
+        ButtonWidth.WRAPPED -> modifier.wrapContentWidth()
+        ButtonWidth.MEDIUM -> modifier.width(buttonWidth(LocalContext.current).dp)
+        ButtonWidth.FILLED -> modifier.fillMaxWidth()
+    }
     TextButton(onClick = action) {
         TextView(modifier = finalModifier, text = label.uppercase(), size = 13, align = TextAlign.Center)
     }

@@ -9,6 +9,8 @@ import tech.mohamedashraf.data.firebase.*
 import tech.mohamedashraf.data.repository.*
 import tech.mohamedashraf.domain.repository.*
 import tech.mohamedashraf.domain.usecase.*
+import tech.mohamedashraf.presentation.chat.ChatViewModel
+import tech.mohamedashraf.presentation.details.ProductDetailsViewModel
 import tech.mohamedashraf.presentation.home.HomeViewModel
 import tech.mohamedashraf.presentation.login.LoginViewModel
 import tech.mohamedashraf.presentation.register.RegisterViewModel
@@ -25,7 +27,11 @@ val appModule = module {
 
     viewModel { VerificationViewModel(get(), get(), get()) }
 
-    viewModel { HomeViewModel(get()) }
+    viewModel { HomeViewModel(get(), get()) }
+
+    viewModel { ProductDetailsViewModel(get()) }
+
+    viewModel { ChatViewModel(get()) }
 }
 
 val dataModule = module {
@@ -54,4 +60,6 @@ val domainModule = module {
     single { Logout(get()) }
 
     single { GetMarketplaceProducts(get(), get()) }
+
+    single { GetProductDetails(get()) }
 }
