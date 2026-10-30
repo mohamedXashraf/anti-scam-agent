@@ -1,6 +1,11 @@
 package tech.mohamedashraf.presentation.ui.theme
 import androidx.compose.ui.graphics.Color
 
+val error = Color(0xFFCD5C5C)
+val success = Color(0xFF2D9966)
+
+// ============================================================================================ //
+
 val primaryLight = Color(0xFF0B0C0C)
 val onPrimaryLight = Color(0xFFFFFFFF)
 val primaryContainerLight = Color(0xFF222222)

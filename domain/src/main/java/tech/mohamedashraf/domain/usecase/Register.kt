@@ -17,7 +17,11 @@ class Register(private val userRepository: UserRepository) {
             passwordConfirmation.isBlank() -> throw MissingInfoError("Password is required")
             password != passwordConfirmation -> throw PasswordConfirmationMismatchError("Password confirmation does not match")
             !email.isValidEmail() -> throw InvalidEmailError("Invalid Email")
-            else -> userRepository.register(name, email, password)
+            else -> {
+                val user = userRepository.register(name, email, password)
+                if (user != null) user.verified = userRepository.checkLoggedInUserVerification()
+                user
+            }
         }
     }
 }

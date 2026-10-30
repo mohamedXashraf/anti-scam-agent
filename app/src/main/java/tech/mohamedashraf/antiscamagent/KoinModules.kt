@@ -6,9 +6,11 @@ import org.koin.dsl.module
 import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.bind
 import tech.mohamedashraf.data.firebase.*
+import tech.mohamedashraf.data.muse.MuseAPI
 import tech.mohamedashraf.data.repository.*
 import tech.mohamedashraf.domain.repository.*
 import tech.mohamedashraf.domain.usecase.*
+import tech.mohamedashraf.presentation.agent.AgentViewModel
 import tech.mohamedashraf.presentation.chat.ChatViewModel
 import tech.mohamedashraf.presentation.details.ProductDetailsViewModel
 import tech.mohamedashraf.presentation.home.HomeViewModel
@@ -32,6 +34,8 @@ val appModule = module {
     viewModel { ProductDetailsViewModel(get()) }
 
     viewModel { ChatViewModel(get()) }
+
+    viewModel { AgentViewModel(get()) }
 }
 
 val dataModule = module {
@@ -40,9 +44,11 @@ val dataModule = module {
 
     single { FireStoreDB() }
 
+    single { MuseAPI() }
+
     singleOf(::UserRepositoryImplementation).bind(UserRepository::class)
 
-    single<MarketplaceRepository> { MarketplaceRepositoryImplementation(get()) }
+    single<MarketplaceRepository> { MarketplaceRepositoryImplementation(get(), get()) }
 }
 
 val domainModule = module {
@@ -62,4 +68,6 @@ val domainModule = module {
     single { GetMarketplaceProducts(get(), get()) }
 
     single { GetProductDetails(get()) }
+
+    single { StartAgenticDealVerification(get()) }
 }

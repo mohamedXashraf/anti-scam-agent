@@ -31,4 +31,11 @@ data class Product(
         "sellerId" to sellerId,
         "chat" to chat.map { it.toMap() }
     )
+
+    fun toPromptMap() = mapOf(
+        "name" to name,
+        "description" to description,
+        "price" to price,
+        "chat" to chat.map { it.toMap() }
+    )
 }

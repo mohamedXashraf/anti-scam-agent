@@ -15,6 +15,7 @@ fun Throwable.errorMessage(): String {
         is AccountCollisionError -> stringResource(R.string.account_collision_error)
         is AccountNotFoundError -> stringResource(R.string.account_not_found_error)
         is PasswordConfirmationMismatchError -> stringResource(R.string.account_not_found_error)
+        is ProductNotFoundError -> stringResource(R.string.invalid_product_error)
         else -> stringResource(R.string.general_error)
     }
 }

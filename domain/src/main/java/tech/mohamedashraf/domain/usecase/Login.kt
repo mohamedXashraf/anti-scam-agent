@@ -13,7 +13,11 @@ class Login(private val userRepository: UserRepository) {
             email.isBlank() -> throw MissingInfoError("Email is required")
             password.isBlank() -> throw MissingInfoError("Password is required")
             !email.isValidEmail() -> throw InvalidEmailError("Invalid email")
-            else -> userRepository.login(email, password)
+            else -> {
+                val user = userRepository.login(email, password)
+                if (user != null) user.verified = userRepository.checkLoggedInUserVerification()
+                user
+            }
         }
     }
 }
