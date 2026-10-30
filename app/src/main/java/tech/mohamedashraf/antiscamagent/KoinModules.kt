@@ -6,7 +6,8 @@ import org.koin.dsl.module
 import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.bind
 import tech.mohamedashraf.data.firebase.*
-import tech.mohamedashraf.data.muse.MuseAPI
+import tech.mohamedashraf.data.http.HttpsClient
+import tech.mohamedashraf.data.muse.Muse
 import tech.mohamedashraf.data.repository.*
 import tech.mohamedashraf.domain.repository.*
 import tech.mohamedashraf.domain.usecase.*
@@ -40,15 +41,19 @@ val appModule = module {
 
 val dataModule = module {
 
+    single { HttpsClient.create() }
+
     single { Authentication() }
 
     single { FireStoreDB() }
 
-    single { MuseAPI() }
+    single { FirebaseStorage() }
+
+    single { Muse(get()) }
 
     singleOf(::UserRepositoryImplementation).bind(UserRepository::class)
 
-    single<MarketplaceRepository> { MarketplaceRepositoryImplementation(get(), get()) }
+    single<MarketplaceRepository> { MarketplaceRepositoryImplementation(get(), get(), get()) }
 }
 
 val domainModule = module {

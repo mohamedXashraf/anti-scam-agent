@@ -17,7 +17,6 @@ android {
         targetSdk = 37
         versionCode = 100
         versionName = "1.0.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -47,4 +46,6 @@ dependencies {
     implementation(libs.koin.android)
     implementation(libs.koin.android.compose)
     implementation(libs.koin.android.coroutines)
+
+    implementation(libs.retrofit)
 }

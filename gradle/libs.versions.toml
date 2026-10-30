@@ -2,12 +2,12 @@
 
 [versions]
 # Define the dependency versions
-gradle = "9.4.1"
+gradle = "9.5.0"
 kotlin = "2.4.21"
 ksp = "2.3.10"
 coroutines = "1.11.0"
 kotlin-gradle-plugin = "1.6.10"
-kotlin-serialization = "2.4.10"
+kotlin-serialization = "2.4.21"
 orgEclipsePahoClientMqttv3 = "1.2.5"
 serialization = "1.12.0"
 serialization-plugin = "2.4.21"
@@ -21,8 +21,8 @@ play_services_auth = "22.0.0"
 play_services_auth_phone = "18.3.1"
 
 # Ktor
-ktor = "3.6.0"
-ktor_serialization_json = "3.6.0"
+ktor = "3.6.1"
+ktor_serialization_json = "3.6.1"
 
 # Koin
 koin = "4.2.2"
@@ -91,6 +91,7 @@ analytics = "22.5.0"
 crashlytics = "19.4.4"
 auth = "23.2.1"
 firestore = "25.1.4"
+storage = "23.0.0"
 
 # TensorFlow
 tensorflow = "2.17.0"
@@ -263,6 +264,7 @@ firebase_analytics = { module = "com.google.firebase:firebase-analytics-ktx", ve
 firebase_crashlytics = { module = "com.google.firebase:firebase-crashlytics-ktx", version.ref = "crashlytics" }
 firebase_auth = { module = "com.google.firebase:firebase-auth-ktx", version.ref = "auth" }
 firebase_firestore = { module = "com.google.firebase:firebase-firestore-ktx", version.ref = "firestore" }
+firebase_storage = { module = "com.google.firebase:firebase-storage", version.ref = "storage" }
 firebase_ml_model_downloader = { module = "com.google.firebase:firebase-ml-modeldownloader", version.ref = "firebase" }
 
 # TensorFlow

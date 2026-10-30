@@ -7,5 +7,5 @@ import java.io.File
 interface MarketplaceRepository {
     suspend fun getProducts(): List<Product>
     suspend fun getProductDetails(productId: String): Product?
-    suspend fun verifyDeal(product: Product, productListingPhoto: File, productLiveVideo: File?): DealVerification
+    suspend fun verifyDeal(product: Product, productLiveVideo: File?): DealVerification
 }
