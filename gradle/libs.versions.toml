@@ -87,10 +87,10 @@ espresso = "3.7.0"
 google-services = "4.5.0"
 firebase-crashlytics-gradle = "3.0.8"
 firebase = "32.0.0"
-analytics = "22.5.0"
-crashlytics = "19.4.4"
-auth = "23.2.1"
-firestore = "25.1.4"
+analytics = "24.0.0"
+crashlytics = "21.0.1"
+auth = "25.0.0"
+firestore = "27.1.0"
 storage = "23.0.0"
 
 # TensorFlow
@@ -260,10 +260,10 @@ espresso_core = { module = "androidx.test.espresso:espresso-core", version.ref =
 # Firebase
 google-services = { module = "com.google.gms:google-services", version.ref = "google-services" }
 firebase-crashlytics-gradle = { module = "com.google.firebase:firebase-crashlytics-gradle", version.ref = "firebase-crashlytics-gradle" }
-firebase_analytics = { module = "com.google.firebase:firebase-analytics-ktx", version.ref = "analytics" }
-firebase_crashlytics = { module = "com.google.firebase:firebase-crashlytics-ktx", version.ref = "crashlytics" }
-firebase_auth = { module = "com.google.firebase:firebase-auth-ktx", version.ref = "auth" }
-firebase_firestore = { module = "com.google.firebase:firebase-firestore-ktx", version.ref = "firestore" }
+firebase_analytics = { module = "com.google.firebase:firebase-analytics", version.ref = "analytics" }
+firebase_crashlytics = { module = "com.google.firebase:firebase-crashlytics", version.ref = "crashlytics" }
+firebase_auth = { module = "com.google.firebase:firebase-auth", version.ref = "auth" }
+firebase_firestore = { module = "com.google.firebase:firebase-firestore", version.ref = "firestore" }
 firebase_storage = { module = "com.google.firebase:firebase-storage", version.ref = "storage" }
 firebase_ml_model_downloader = { module = "com.google.firebase:firebase-ml-modeldownloader", version.ref = "firebase" }
 

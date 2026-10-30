@@ -95,7 +95,7 @@ private fun AgentView(dealVerification: DealVerification, onCheck: (File?) -> Un
                 Spacer(modifier = Modifier.width(16.dp))
                 CameraView { previewVideo.value = it }
                 Spacer(modifier = Modifier.width(4.dp))
-                if(previewVideo.value != null) Icon(modifier = Modifier.size(32.dp), imageVector = Icons.Rounded.CheckCircle, tint = success, contentDescription = "")
+                if(previewVideo.value != null) Icon(modifier = Modifier.size(28.dp), imageVector = Icons.Rounded.CheckCircle, tint = success, contentDescription = "")
             }
         }
         item { Spacer(modifier = Modifier.height(32.dp)) }
@@ -121,7 +121,7 @@ private fun VerificationNoteItem(note: DealVerificationNote) {
         ) {
             TextView(modifier = Modifier.weight(1f), text = note.note, size = 13, color = outlineLight)
             Spacer(modifier = Modifier.width(16.dp))
-            Icon(modifier = Modifier.size(32.dp), imageVector = if (note.accepted) Icons.Rounded.CheckCircle else Icons.Rounded.Cancel, tint = if (note.accepted) success else error, contentDescription = "")
+            Icon(modifier = Modifier.size(28.dp), imageVector = if (note.accepted) Icons.Rounded.CheckCircle else Icons.Rounded.Cancel, tint = if (note.accepted) success else error, contentDescription = "")
         }
     }
 }
@@ -197,7 +197,7 @@ private fun HomeViewPreview() {
                 DealVerificationNote("Product in video matches the listing description", true),
                 DealVerificationNote("Seller refused to show serial number", false),
             ),
-            recommendation = "You Bargain for it it, it is a fair deal."
+            recommendation = "You can bargain for it, it is a fair deal."
         ))
     }
 }
