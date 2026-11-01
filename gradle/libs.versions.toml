@@ -50,6 +50,7 @@ exifinterface = "1.4.2"
 appAutomotive = "1.7.0"
 playServicesWearable = "20.0.1"
 appfunctions = "1.0.0-beta01"
+media3Transformer = "1.11.1"
 
 # Compose
 compose = "1.12.1"
@@ -220,6 +221,8 @@ coroutines_android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-androi
 exifinterface = { module = "androidx.exifinterface:exifinterface", version.ref = "exifinterface" }
 androidx-appfunctions = { module = "androidx.appfunctions:appfunctions", version.ref = "appfunctions" }
 androidx-appfunctions-compiler = { module = "androidx.appfunctions:appfunctions-compiler", version.ref = "appfunctions" }
+androidx-media3-transformer = { module = "androidx.media3:media3-transformer", version.ref = "media3Transformer" }
+androidx-media3-effect = { module = "androidx.media3:media3-effect", version.ref = "media3Transformer" }
 
 # Compose
 compose_ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }

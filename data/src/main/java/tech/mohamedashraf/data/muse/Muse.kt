@@ -20,7 +20,7 @@ class Muse(retrofit: Retrofit) {
 
     private fun prompt(product: Product, liveVideoAttached: Boolean) = """
         You check and verify a product before going on with the deal.
-        Use only the provided product details JSON and product listing photo and an optional provided short video for the product on meetup with the seller.
+        Use only the provided product details JSON and product listing photo and an optional provided short video for the product shape and state (no functionality test needed) on meetup with the seller.
         Reply in JSON form only following the following scheme:
         {
             "notes": {
@@ -38,7 +38,7 @@ class Muse(retrofit: Retrofit) {
           },
           "recommendation": {
             "type": "String",
-            "description": "final recommendation prase whether Buy or Bargain or Scam and should be avoided"
+            "description": "final recommendation prase whether Buy, it is a good deal or Bargain, it is a fair deal for lower price or Scam and should be avoided"
           }
         }
 

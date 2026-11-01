@@ -1,21 +1,21 @@
 package tech.mohamedashraf.presentation.utils
 
-import androidx.compose.foundation.lazy.LazyListState
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.derivedStateOf
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.remember
-import kotlinx.datetime.DateTimeUnit
+import android.content.Context
+import android.net.Uri
+import androidx.annotation.OptIn
+import androidx.core.net.toUri
+import androidx.media3.common.MimeTypes
+import androidx.media3.common.util.UnstableApi
+import androidx.media3.transformer.Composition
+import androidx.media3.transformer.DefaultEncoderFactory
+import androidx.media3.transformer.ExportException
+import androidx.media3.transformer.ExportResult
+import androidx.media3.transformer.Transformer
+import androidx.media3.transformer.VideoEncoderSettings
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.TimeZone
-import kotlinx.datetime.format
-import kotlinx.datetime.format.FormatStringsInDatetimeFormats
-import kotlinx.datetime.format.byUnicodePattern
-import kotlinx.datetime.minus
-import kotlinx.datetime.plus
-import kotlinx.datetime.toInstant
 import kotlinx.datetime.toLocalDateTime
-import kotlin.time.ExperimentalTime
+import java.io.File
 import kotlin.time.Instant
 
 fun Double.format(): String = String.format("%.2f", this)
@@ -58,45 +58,28 @@ fun Long.date(): String {
     return "$date  $hour:$minute $part"
 }
 
-@OptIn(ExperimentalTime::class, FormatStringsInDatetimeFormats::class)
-fun Long.mmyyyy(): String {
-    val localDateTime = localDateTime(this)
-    val formatter = LocalDateTime.Format { byUnicodePattern("MM yyyy") }
-    return localDateTime.format(formatter).replace(" ", "")
-}
+@OptIn(UnstableApi::class)
+fun File.compressVideo(
+    context: Context,
+    outputFile: File,
+    onSuccess: (File) -> Unit,
+    onError: (Exception) -> Unit
+) {
+    val videoEncoderSettings = VideoEncoderSettings.Builder().setBitrate(3_500_000).build()
 
-fun Long.monthYear(): String {
-    val localDateTime = localDateTime(this)
-    return "${localDateTime.month.name} ${localDateTime.year}"
-}
-
-fun Long.pastMonth(): Long {
-    val localDateTime = localDateTime(this)
-    val date = localDateTime.date.minus(1, DateTimeUnit.MONTH)
-    return LocalDateTime(date = date, time = localDateTime.time).toInstant(TimeZone.currentSystemDefault()).toEpochMilliseconds()
-}
-
-fun Long.nextMonth(): Long {
-    val localDateTime = localDateTime(this)
-    val date = localDateTime.date.plus(1, DateTimeUnit.MONTH)
-    return LocalDateTime(date = date, time = localDateTime.time).toInstant(TimeZone.currentSystemDefault()).toEpochMilliseconds()
-}
-
-@Composable
-fun LazyListState.isScrollingUp(): Boolean {
-    val previousIndex = remember(this) { mutableIntStateOf(firstVisibleItemIndex) }
-    val previousScrollOffset = remember(this) { mutableIntStateOf(firstVisibleItemScrollOffset) }
-
-    return remember(this) {
-        derivedStateOf {
-            if (previousIndex.intValue != firstVisibleItemIndex) {
-                previousIndex.intValue > firstVisibleItemIndex
-            } else {
-                previousScrollOffset.intValue >= firstVisibleItemScrollOffset
-            }.also {
-                previousIndex.intValue = firstVisibleItemIndex
-                previousScrollOffset.intValue = firstVisibleItemScrollOffset
+    val transformer = Transformer.Builder(context)
+        .setVideoMimeType(MimeTypes.VIDEO_H264)
+        .setEncoderFactory(DefaultEncoderFactory.Builder(context).setRequestedVideoEncoderSettings(videoEncoderSettings).build())
+        .addListener(object : Transformer.Listener {
+            override fun onCompleted(composition: Composition, exportResult: ExportResult) {
+                onSuccess(outputFile)
             }
-        }
-    }.value
+
+            override fun onError(composition: Composition, exportResult: ExportResult, exportException: ExportException) {
+                onError(exportException)
+            }
+        })
+        .build()
+
+    transformer.start(androidx.media3.common.MediaItem.fromUri(this.toUri()), outputFile.absolutePath)
 }

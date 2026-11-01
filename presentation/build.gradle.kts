@@ -44,6 +44,9 @@ dependencies {
     implementation(libs.koin.android.compose)
     implementation(libs.koin.android.coroutines)
 
+    implementation(libs.androidx.media3.transformer)
+    implementation(libs.androidx.media3.effect)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.espresso.core)
     androidTestImplementation(libs.junit.ext)

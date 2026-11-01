@@ -56,6 +56,7 @@ import tech.mohamedashraf.presentation.ui.theme.outlineLight
 import tech.mohamedashraf.presentation.ui.theme.primaryLight
 import tech.mohamedashraf.presentation.ui.theme.success
 import tech.mohamedashraf.presentation.utils.camera
+import tech.mohamedashraf.presentation.utils.compressVideo
 import tech.mohamedashraf.presentation.utils.errorMessage
 import tech.mohamedashraf.presentation.utils.requestPermissions
 import java.io.File
@@ -150,9 +151,24 @@ private fun CameraView(onVideoReady: (File) -> Unit = {}) {
     val context = LocalContext.current
     val video = remember { mutableStateOf<File?>(null) }
     val showSettingsDialog = remember { mutableStateOf(false) }
+    val isProcessingVideo = remember { mutableStateOf(false) }
     val cameraLauncher = camera { success ->
         if (success && video.value != null && video.value!!.exists()) {
-            onVideoReady(video.value!!)
+            isProcessingVideo.value = true
+            video.value!!.compressVideo(
+                context,
+                createFile(context),
+                onSuccess = {
+                    onVideoReady(it)
+                    isProcessingVideo.value = false
+                },
+                onError = {
+                    it.printStackTrace()
+                    video.value?.delete()
+                    video.value = null
+                    isProcessingVideo.value = false
+                }
+            )
         } else {
             video.value?.delete()
             video.value = null
@@ -160,7 +176,7 @@ private fun CameraView(onVideoReady: (File) -> Unit = {}) {
     }
     val launcher = requestPermissions { isGranted ->
         if (isGranted) {
-            val file = File(File(context.cacheDir, "videos").apply { mkdirs() }, "${System.currentTimeMillis()}.mp4")
+            val file = createFile(context)
             video.value = file
             cameraLauncher.launch(FileProvider.getUriForFile(context, "${context.packageName}.fileprovider", file))
         }
@@ -172,12 +188,18 @@ private fun CameraView(onVideoReady: (File) -> Unit = {}) {
         }
     }
 
+    if(isProcessingVideo.value) {
+        Loading()
+    }
+
     if (showSettingsDialog.value) {
         SettingDialog(context, showSettingsDialog)
     }
 
     IconButtonView(icon = Icons.Rounded.Camera, tint = primaryLight) { launcher.launch(arrayOf(Manifest.permission.CAMERA)) }
 }
+
+private fun createFile(context: Context) = File(File(context.cacheDir, "videos").apply { mkdirs() }, "${System.currentTimeMillis()}.mp4")
 
 private fun Context.findActivity(): ComponentActivity? {
     var ctx = this
